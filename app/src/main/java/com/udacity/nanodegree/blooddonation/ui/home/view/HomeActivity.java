@@ -318,7 +318,7 @@ Intent about = new Intent(HomeActivity.this, AboutActivity.class);
         }
         if (marker.getTitle().equals("Donor")) {
             toggleBottomSheet(donorBehavior, receiverBehaviour);
-        } else if (marker.getTitle().equals("Blood Request")) {
+        } else if (marker.getTitle().equals("Request")) {
             toggleBottomSheet(receiverBehaviour, donorBehavior);
         }
         return false;

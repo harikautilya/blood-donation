@@ -4,40 +4,57 @@
     android:id="@+id/donor_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#fff"
+
     android:orientation="vertical"
     app:behavior_hideable="true"
     app:behavior_peekHeight="56dp"
-    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-    >
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_vertical"
-      android:orientation="horizontal"
-      >
-
-    <TextView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/user_details"
-        android:textColor="#444"
-        android:textStyle="bold"
-        />
+        android:layout_gravity="center_vertical"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:stretchColumns="*">
 
 
-  </LinearLayout>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Donor Name"
+                android:layout_column="0"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/donor_name"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Donor Phone"
+                android:layout_column="0"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/donor_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
 
 
-  <Button
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="30dp"
-      android:background="#000000"
-      android:foreground="?android:attr/selectableItemBackground"
-      android:text="@string/donor"
-      android:textColor="#fff"
-      />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="#000000"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/donor"
+        android:textColor="#fff" />
 
 </LinearLayout>
