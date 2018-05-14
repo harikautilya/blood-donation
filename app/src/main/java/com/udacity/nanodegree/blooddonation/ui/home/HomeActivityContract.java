@@ -10,9 +10,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseError;
 import com.udacity.nanodegree.blooddonation.base.BasePresenter;
 import com.udacity.nanodegree.blooddonation.base.BaseView;
+import com.udacity.nanodegree.blooddonation.data.model.Location;
 import com.udacity.nanodegree.blooddonation.data.model.ReceiverDonorRequestType;
 import com.udacity.nanodegree.blooddonation.data.model.User;
-import com.udacity.nanodegree.blooddonation.ui.home.model.RequestDetails;
 
 public interface HomeActivityContract {
 
@@ -46,6 +46,8 @@ public interface HomeActivityContract {
         void animateGeoMarker(String key, GeoLocation location);
 
         void showGeoQueryErrorDialogBox(DatabaseError error);
+
+        android.location.Location getCurrentLocation();
     }
 
     interface Presenter extends BasePresenter {
@@ -60,12 +62,8 @@ public interface HomeActivityContract {
          */
         void onCurrentLocationClicked();
 
-        //void queryGeoFire(LatLng latLng);
+        void onBloodRequest(ReceiverDonorRequestType requestDetails);
 
-        //void queryGeoFire(LatLng latLng, String bgp);
-
-        void onBloodRequest(RequestDetails requestDetails);
-
-        void onDonateRequest(RequestDetails requestDetails);
+        void onDonateRequest(ReceiverDonorRequestType requestDetails);
     }
 }

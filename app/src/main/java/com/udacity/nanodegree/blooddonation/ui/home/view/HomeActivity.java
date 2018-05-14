@@ -66,6 +66,7 @@ public class HomeActivity extends BaseActivity
     private LocationUtil mLocationUtil;
 
     private Map<String, Marker> markers;
+    private Location currentLocation;
 
 
     @Override
@@ -205,8 +206,9 @@ public class HomeActivity extends BaseActivity
                 Toast.makeText(this, "Map Theme", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_about:
-Intent about = new Intent(HomeActivity.this, AboutActivity.class);
-        startActivity(about);                break;
+                Intent about = new Intent(HomeActivity.this, AboutActivity.class);
+                startActivity(about);
+                break;
             case R.id.action_sign_out:
                 logout();
                 break;
@@ -259,10 +261,10 @@ Intent about = new Intent(HomeActivity.this, AboutActivity.class);
                                          ReceiverDonorRequestType receiverDonorRequestType) {
         if (isReceiver) {
             addRequestMarker(receiverDonorRequestType);
-            //mPresenter.onBloodRequest(requestDetails);
+            mPresenter.onBloodRequest(receiverDonorRequestType);
             return;
         }
-        //mPresenter.onDonateRequest(requestDetails);
+        mPresenter.onDonateRequest(receiverDonorRequestType);
         addDonorMarker(receiverDonorRequestType);
     }
 
@@ -287,7 +289,6 @@ Intent about = new Intent(HomeActivity.this, AboutActivity.class);
 
         updateCamera(latLng);
 
-        //mPresenter.queryGeoFire(latLng, receiverDonorRequestType.getbGp());
     }
 
     @Override
@@ -392,6 +393,12 @@ Intent about = new Intent(HomeActivity.this, AboutActivity.class);
 
     @Override
     public void onLocationReceived(@NonNull Location location, @NonNull String addressString) {
+        currentLocation = location;
         updateCamera(new LatLng(location.getLatitude(), location.getLongitude()));
+    }
+
+    @Override
+    public Location getCurrentLocation() {
+        return currentLocation;
     }
 }
